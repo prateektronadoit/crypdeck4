@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import './ProductPage.css';
@@ -25,7 +25,7 @@ const ProductPage: React.FC = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -184,7 +184,7 @@ const ProductPage: React.FC = () => {
               <motion.div 
                 key={index} 
                 className="project-card h-[500px] relative perspective-1200"
-                ref={el => cardsRef.current[index] = el}
+                ref={(el: HTMLDivElement | null) => { cardsRef.current[index] = el; }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
