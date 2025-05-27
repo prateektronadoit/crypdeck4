@@ -1,0 +1,58 @@
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.dice-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1rem;
+  backface-visibility: visible;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.glowing-logo {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Lightning effect for connecting paths */
+@keyframes lightning {
+  0%, 100% {
+    stroke: rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+  25% {
+    stroke: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  }
+  50% {
+    stroke: rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  }
+  75% {
+    stroke: rgba(255, 255, 255, 1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+  }
+}
+
+.lightning-path {
+  animation: lightning 3s infinite;
+  animation-timing-function: ease-in-out;
+}
